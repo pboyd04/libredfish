@@ -1,6 +1,5 @@
-libredfish (1.0.2-1) unstable; urgency=medium
+libredfish (1.0.2-1) unstable; urgency=low
 
- * Initial release
+  * Initial release
 
- -- Patrick Boyd <Patrick_Boyd@Dell.com> Thu, 14 Dec 2017
-
+ -- Patrick Boyd <Patrick_Boyd@Dell.com>  Thu, 21 Jun 2018 15:50:14 -0500

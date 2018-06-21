@@ -1,0 +1,18 @@
+Source: libredfish
+Priority: optional
+Maintainer: DMTF
+Build-Depends: debhelper (>= 8.0.0), cmake
+Standards-Version: 3.9.4
+Section: libs
+
+Package: libredfish-dev
+Section: libdevel
+Architecture: any
+Depends: libredfish (= ${binary:Version})
+Description: Client library for redfish implementations
+
+Package: libredfish
+Section: libs
+Architecture: any
+Depends: libcurl3, libjansson4
+Description: Client library for redfish implementations
