@@ -1,21 +1,31 @@
 sudo: required
-env:
-  matrix:
-  - OS_TYPE=centos OS_VERSION=6
-  - OS_TYPE=centos OS_VERSION=7
-  
 services:
   - docker
 
-before_install:
- - sudo apt-get update
- - sudo apt-get install -y libjansson-dev
-  
+cache:
+    directories:
+     - $HOME/.cache
+
+language: C
+
+env:
+    matrix:
+      - OS=el DIST=6
+      - OS=el DIST=7
+      - OS=fedora DIST=24
+      - OS=fedora DIST=25
+      - OS=ubuntu DIST=trusty
+      - OS=ubuntu DIST=precise
+      - OS=ubuntu DIST=xenial
+      - OS=ubuntu DIST=yakkety
+      - OS=debian DIST=jessie
+      - OS=debian DIST=wheezy
+      - OS=debian DIST=stretch
+      - OS=ubuntu DIST=xenial ARCH=i386
+      - OS=debian DIST=jessie ARCH=i386
+
 script:
-    ############################################################################
-    # Build main and tests
-    ############################################################################
-    - mkdir -p build
-    - cd build
-    - cmake .. 
-    - make
+ - git submodule update --init --recursive
+ - git describe --long
+ - git clone https://github.com/packpack/packpack.git packpack
+ - packpack/packpack
