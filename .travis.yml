@@ -26,6 +26,6 @@ env:
 
 script:
  - git submodule update --init --recursive
- - git describe --long
+ - git describe --long || true
  - git clone https://github.com/packpack/packpack.git packpack
  - packpack/packpack
