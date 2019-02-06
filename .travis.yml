@@ -32,9 +32,7 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git describe --long || true; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git clone https://github.com/packpack/packpack.git packpack; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then packpack/packpack; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then wget https://curl.haxx.se/windows/dl-7.64.0/curl-7.64.0-win64-mingw.zip; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then 7z x curl-7.63.0-win64-mingw.zip && mv curl-7.63.0-win64-mingw curl; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mkdir build && cd build && cmake .. -DCURL_LIBRARY=../curl/lib/libcurl.dll.a -DCURL_INCLUDE=../curl/include && make; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then sh travisWinBuild.sh; fi
 deploy:
   provider: bintray
   file: ".bintray.json"
