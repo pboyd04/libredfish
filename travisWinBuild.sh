@@ -5,5 +5,5 @@ mv curl-7.64.0-win64-mingw curl
 #Do Build
 mkdir build
 cd build 
-cmake .. -DCURL_LIBRARY=../curl/lib/libcurl.dll.a -DCURL_INCLUDE=../curl/include 
+cmake .. -DCURL_LIBRARY=../curl/lib/libcurl.dll.a -DCURL_INCLUDE_DIR=../curl/include 
 make

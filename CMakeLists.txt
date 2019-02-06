@@ -23,7 +23,7 @@ find_package(CURL REQUIRED)
 find_package(Jansson REQUIRED)
 find_package(CZMQ)
 
-include_directories(${CURL_INCLUDE})
+include_directories(${CURL_INCLUDE_DIR})
 
 add_library(redfish SHARED ${REDFISH_SRC} ${REDFISH_HDR_PRIVATE})
 if(CZMQ_FOUND)
