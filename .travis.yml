@@ -14,11 +14,24 @@ env:
   - OS=el DIST=7
   - OS=fedora DIST=27
   - OS=fedora DIST=26
+  - OS=Windows
+matrix:
+  exclude:
+  - os: windows
+    env: OS=el DIST=6
+  - os: windows
+    env: OS=el DIST=7
+  - os: windows
+    env: OS=fedora DIST=27
+  - os: windows
+    env: OS=fedora DIST=26
+  - os: linux
+    env: OS=Windows
 script:
-- git submodule update --init --recursive
-- git describe --long || true
-- git clone https://github.com/packpack/packpack.git packpack
-- packpack/packpack
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git submodule update --init --recursive
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git describe --long || true
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git clone https://github.com/packpack/packpack.git packpack
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then packpack/packpack
 deploy:
   provider: bintray
   file: ".bintray.json"
