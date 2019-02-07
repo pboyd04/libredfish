@@ -16,4 +16,4 @@ cd build
 echo "Configuring..."
 cmake .. -DCURL_LIBRARY=../curl/lib/libcurl.dll.a -DCURL_INCLUDE_DIR=../curl/include -DJANSSON_LIBRARIES=../jansson.lib -DJANSSON_INCLUDE_DIRS=../
 echo "Building..."
-cmake --build .. --config Release
+cmake --build . --config Release
