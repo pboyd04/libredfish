@@ -35,7 +35,7 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git describe --long || true; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git clone https://github.com/packpack/packpack.git packpack; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then packpack/packpack; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then sh travisWinBuild.sh; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then sh -x travisWinBuild.sh; fi
 deploy:
   provider: bintray
   file: ".bintray.json"

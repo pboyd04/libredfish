@@ -28,7 +28,7 @@ echo "Completed downloading getopt.h for windows..."
 mkdir build
 cd build 
 echo "Configuring..."
-cmake .. -DCMAKE_GENERATOR_PLATFORM=$PLATFORM -DCURL_LIBRARY=../curl/lib/curl.lib -DCURL_INCLUDE_DIR=../curl/include -DJANSSON_LIBRARIES=../jansson.lib -DJANSSON_INCLUDE_DIRS=../
+cmake .. -A $PLATFORM -DCURL_LIBRARY=../curl/lib/curl.lib -DCURL_INCLUDE_DIR=../curl/include -DJANSSON_LIBRARIES=../jansson.lib -DJANSSON_INCLUDE_DIRS=../
 echo "Building..."
 cmake --build . --config Release
 echo "Making deployment directory..."
