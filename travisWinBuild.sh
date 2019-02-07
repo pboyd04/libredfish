@@ -2,7 +2,7 @@
 #Get CURL
 echo "Downloading CURL..."
 if [[ "$VISUAL_STUDIO" == "Visual Studio 15 2017 Win64" ]]; then
-CMAKE_FLAGS=-A x64
+CMAKE_FLAGS="-A x64"
 wget https://curl.haxx.se/windows/dl-7.64.0/curl-7.64.0-win64-mingw.zip
 7z x curl-7.64.0-win64-mingw.zip
 mv curl-7.64.0-win64-mingw curl
