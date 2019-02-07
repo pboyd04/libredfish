@@ -8,10 +8,14 @@
 #include <getopt.h>
 #ifndef _MSC_VER
 #include <unistd.h>
-#define mutex_t pthread_mutex_t
+#define mutex_t           pthread_mutex_t
+#define mutex_lock        pthread_mutex_lock
+#define mutex_unlock      pthread_mutex_unlock
 #else
 #include <windows.h>
-#define mutex_t SRWLOCK
+#define mutex_t           SRWLOCK
+#define mutex_lock        AcquireSRWLockExclusive
+#define mutex_unlock      ReleaseSRWLockExclusive
 #endif
 #include <signal.h>
 
@@ -379,7 +383,7 @@ static void gotRedfishService(redfishService* service, void* context)
         getPayloadByPathAsync(service, "/", NULL, gotPayload, myContext);
     }
     serviceDecRefAndWait(service);
-    pthread_mutex_unlock(mutex);
+    mutex_unlock(mutex);
 }
 
 int main(int argc, char** argv)
@@ -501,12 +505,12 @@ int main(int argc, char** argv)
 
     libredfishSetDebugFunction(syslogPrintf);
 
-    pthread_mutex_lock(&mutex);
+    mutex_lock(&mutex);
     ret = createServiceEnumeratorAsync(host, NULL, auth, flags, gotRedfishService, &mutex);
     if(ret != false)
     {
         //Wait till the callback is done...
-        pthread_mutex_lock(&mutex);
+        mutex_lock(&mutex);
     }
     else
     {
