@@ -27,9 +27,9 @@ matrix:
   - os: windows
     env: OS=fedora DIST=26
   - os: linux
-    env: OS=Windows VISUAL_STUDIO="Visual Studio 15 2017" JANSSON_LIB="jansson.lib"
+    env: OS=Windows VISUAL_STUDIO="Visual Studio 15 2017" JANSSON_LIB="jansson.lib" ARCH=x86
   - os: linux
-    env: OS=Windows VISUAL_STUDIO="Visual Studio 15 2017 Win64" JANSSON_LIB="janssonx64.lib"
+    env: OS=Windows VISUAL_STUDIO="Visual Studio 15 2017 Win64" JANSSON_LIB="janssonx64.lib" ARCH=x64
 script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git submodule update --init --recursive; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then git describe --long || true; fi
