@@ -8,6 +8,10 @@
 #include <getopt.h>
 #ifndef _MSC_VER
 #include <unistd.h>
+#define mutex_t pthread_mutex_t
+#else
+#include <windows.h>
+#define mutex_t SRWLOCK
 #endif
 #include <signal.h>
 
@@ -337,7 +341,7 @@ redfishParams gRedfishParams = {0};
 
 static void gotRedfishService(redfishService* service, void* context)
 {
-    pthread_mutex_t*   mutex = (pthread_mutex_t*)context;
+    mutex_t*           mutex = (mutex_t*)context;
     char*              leaf = NULL; 
     gotPayloadContext* myContext;
  
@@ -384,9 +388,15 @@ int main(int argc, char** argv)
     int              opt_index  = 0;
     char*            host = NULL;
     unsigned int     flags = 0;
-    enumeratorAuthentication* auth = NULL; 
-    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+    enumeratorAuthentication* auth = NULL;
     bool ret;
+#ifndef _MSC_VER
+    mutex_t          mutex = PTHREAD_MUTEX_INITIALIZER;
+#else
+    mutex_t          mutex;
+
+    InitializeSRWLock(&mutex);
+#endif
 
     memset(&auth, 0, sizeof(auth));
 
