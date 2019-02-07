@@ -10,4 +10,4 @@ wget https://github.com/pboyd04/jansson/releases/download/v2.11/jansson-config.h
 mkdir build
 cd build 
 cmake .. -DCURL_LIBRARY=../curl/lib/libcurl.dll.a -DCURL_INCLUDE_DIR=../curl/include -DJANSSON_LIBRARIES=../jansson.lib -DJANSSON_INCLUDE_DIRS=../
-make
+cmake --build .. --config Release
