@@ -14,7 +14,8 @@ env:
   - OS=el DIST=7
   - OS=fedora DIST=27
   - OS=fedora DIST=26
-  - OS=Windows
+  - OS=Windows VISUAL_STUDIO="Visual Studio 15 2017" JANSSON_LIB="jansson.lib"
+  - OS=Windows VISUAL_STUDIO="Visual Studio 15 2017 Win64" JANSSON_LIB="janssonx64.lib"
 matrix:
   exclude:
   - os: windows
