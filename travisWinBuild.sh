@@ -7,8 +7,8 @@ echo "Completed downloading CURL"
 #Get Jansson
 echo "Downloading Jansson..."
 wget -O jansson.lib https://github.com/pboyd04/jansson/releases/download/v2.11/$JANSSON_LIB
-wget https://github.com/pboyd04/jansson/releases/download/v2.11/jansson.h
-wget https://github.com/pboyd04/jansson/releases/download/v2.11/jansson_config.h
+wget -O include/jansson.h https://github.com/pboyd04/jansson/releases/download/v2.11/jansson.h
+wget -O include/jansson_config.h https://github.com/pboyd04/jansson/releases/download/v2.11/jansson_config.h
 echo "Completed downloading Jansson..."
 #Do Build
 mkdir build
