@@ -9,7 +9,7 @@ wget https://curl.haxx.se/windows/dl-7.64.0/curl-7.64.0-win32-mingw.zip
 7z x curl-7.64.0-win32-mingw.zip
 mv curl-7.64.0-win32-mingw curl
 fi
-cp curl/lib/libcurl.a curl/lib/curl.lib
+cp curl/lib/libcurl.dll.a curl/lib/curl.lib
 echo "Completed downloading CURL"
 #Get Jansson
 echo "Downloading Jansson..."
@@ -24,3 +24,7 @@ echo "Configuring..."
 cmake .. -DCURL_LIBRARY=../curl/lib/curl.lib -DCURL_INCLUDE_DIR=../curl/include -DJANSSON_LIBRARIES=../jansson.lib -DJANSSON_INCLUDE_DIRS=../
 echo "Building..."
 cmake --build . --config Release
+echo "Making deployment directory..."
+mkdir ../deploy
+cp ../curl/bin/libcurl* ../deploy
+cp bin/Release/redfish.dll ../deploy
